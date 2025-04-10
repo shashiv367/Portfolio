@@ -44,3 +44,31 @@ export const CONTACT = {
   phoneNo: "+91 9063531983 ",
   email: "vardhans@gmail.com",
 };
+
+export const CERTIFICATIONS = [
+  {
+    title: "Java Programming",
+    provider: "Codetantra",
+    year: 2023,
+  },
+  {
+    title: "Data Structures and Algorithms Through Java",
+    provider: "Codetantra",
+    year: 2024,
+  },
+  {
+    title: "Introduction Database Management System",
+    provider: "Codetantra",
+    year: 2024,
+  },
+  {
+    title: "Build a computer vision app with Azure Cognitive Services",
+    provider: "Coursera",
+    year: 2024,
+  },
+  {
+    title: "Python Programming Essentials",
+    provider: "Coursera",
+    year: 2025,
+  }
+];
