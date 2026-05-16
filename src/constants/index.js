@@ -1,81 +1,224 @@
-import project1 from "../assets/projects/project-1.webp";
-import project2 from "../assets/projects/project-2.webp";
-import project3 from "../assets/projects/project-3.webp";
-import project4 from "../assets/projects/project-4.webp";
+import projectMino from "../assets/projects/chatbot.avif";
+import projectHostel from "../assets/projects/hstl.jpg";
+import projectGrove from "../assets/projects/grove.webp";
+import projectPortfolio from "../assets/projects/portfolio.png";
 
-export const HERO_CONTENT = `I am a passionate full stack developer with a knack for crafting robust and scalable web applications. I am a B.Tech 2nd year student with a keen interest in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB and a few languages like Java, Python, JavaScript, HTML, CSS etc. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences.`;
+export const HERO_CONTENT = `Detail-oriented AIML Engineer and Full Stack Developer based in Hyderabad, with hands-on experience building scalable web and AI-powered applications using Java, Spring Boot, React.js, Node.js, and Python.
 
-export const ABOUT_TEXT = `I am a passionate full stack developer with a knack for crafting robust and scalable web applications. I am a B.Tech 2nd year student with a keen interest in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB and a few languages like Java, Python, JavaScript, HTML, CSS etc. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences. My journey in web development began with a deep curiosity for how things work, and it has evolved into a career where I continuously strive to learn and adapt to new challenges. I thrive in collaborative environments and enjoy solving complex problems to deliver high-quality solutions. Outside of coding, I enjoy staying active, exploring new technologies, and contributing to open-source projects.`;
+I design RESTful APIs, integrate machine learning and NLP into production platforms, and optimize front-end performance for real users. Recent work includes a mental-health AI chatbot (MINO), a secure Spring Boot hostel management system, and geospatial travel platforms with optimized SQL pipelines.
 
+Skilled in JWT authentication, role-based access control, MongoDB and MySQL, Flutter mobile apps, and cloud foundations (AWS Academy). Passionate about agile delivery, clean architecture, and user-centric products — open to software engineering and AIML opportunities.`;
+
+export const EXPERIENCE = [
+  {
+    role: "SDE Intern",
+    company: "Sophrion",
+    period: "Apr 2026 – Present",
+    location: "Hyderabad, India",
+    highlights: [
+      "Engineering the backend of a CRM ecosystem using Node.js and Express, building RESTful APIs to manage customer data, interactions, and business workflows.",
+      "Architected and deployed scalable web application hosting infrastructure, ensuring high availability and optimized server-side performance across environments.",
+      "Contributing to full-stack feature development across the CRM platform, including database schema design, API integration, and frontend connectivity.",
+    ],
+  },
+  {
+    role: "AIML Full Stack Engineer Intern",
+    company: "Grahmind Innovations Pvt Ltd",
+    period: "Dec 2025 – Apr 2026",
+    location: "Hyderabad, India",
+    highlights: [
+      "Built and maintained scalable AI-enabled web application features using React.js, Spring Boot, Python, and MySQL.",
+      "Designed and integrated AIML functionalities into full-stack platforms, including an NLP-powered chatbot and a cross-platform Flutter mobile application.",
+      "Collaborated in agile sprints across multiple concurrent projects, contributing to API design, database optimization, and frontend component development.",
+    ],
+  },
+];
 
 export const PROJECTS = [
+  
   {
-    title: "Multi Chat AI Chatbot",
-    image: project3,
+    title: "Mental-Health AI Assistant (MINO)",
+    image: projectMino,
     description:
-      "Automated an AI chatbot that can simulate human conversation. It uses natural language processing to understand user input and respond intelligently in real-time.",
-    technologies: ["React.js", "CSS", "Python", "HTML5","MYSQL"],
+      "Built a real-time AI chatbot leveraging NLP to understand and intelligently respond to user mental-health queries, simulating empathetic human conversation.",
+    technologies: ["Python", "NLP", "Flask", "React.js"],
+    highlights: [
+      "Developed a Flask REST API backend and integrated a React.js frontend for seamless interaction and efficient data management.",
+      "Implemented context-aware conversation flow to improve session continuity and user experience.",
+    ],
   },
   {
-    title: "E-Commerce Website",
-    image: project1,
+    title: "Hostel Management System",
+    image: projectHostel,
     description:
-      "A fully functional e-commerce website with features like product listing, shopping cart, and user authentication.",
-    technologies: ["HTML", "CSS", "Django", "SQLite"],
+      "Engineered a secure, scalable backend using Spring Boot with JWT-based authentication and role-based access control for student hostel operations.",
+    technologies: ["Spring Boot", "Spring Security", "JWT", "MySQL"],
+    highlights: [
+      "Implemented high-concurrency room allocation and registration workflows with optimized MySQL queries for real-time throughput under peak load.",
+      "Designed a normalized database schema to support efficient student record management and reporting.",
+    ],
   },
   {
-    title: "Hostel Management App",
-    image: project2,
+    title: "Personal Portfolio Website",
+    image: projectPortfolio,
     description:
-      "An application for managing tasks and students, with features such as attendance, availability, and fee tracking and etc.",
-    technologies: ["Java", "NetBeans", "SQL"],
+      "Designed and developed a production-ready developer portfolio with a cosmic glassmorphism UI, animated starfield background, and a full-stack contact workflow.",
+    technologies: [
+      "React.js",
+      "Vite",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "Firebase",
+      "EmailJS",
+      "Framer Motion",
+    ],
+    highlights: [
+      "Built a responsive single-page application with custom glass cursor, interactive particle network, and Vanta galaxy background.",
+      "Implemented an Express API with Firebase Firestore to persist contact submissions and EmailJS for owner and visitor email notifications.",
+      "Structured modular React components, centralized content in constants, and configured Vite dev proxy for unified frontend/backend local development.",
+    ],
   },
   {
-    title: "Travel Application",
-    image: project4,
+    title: "GROVE — Geospatial Travel Platform",
+    image: projectGrove,
     description:
-      "A platform for creating and publishing blog posts, with features like rich text editing, commenting, and user profiles.",
-    technologies: ["HTML", "CSS", "Vue.js", "Express", "mySQL"],
-  },
-  {
-    title: "Portfolio Website",
-    image: project3,
-    description:
-      "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["HTML", "CSS", "React", "Bootstrap"],
+      "Architected a high-precision travel discovery platform using Java and SQL for granular geospatial search and location-based discovery.",
+    technologies: ["Java", "SQL", "NetBeans"],
+    highlights: [
+      "Delivered optimized, sub-second query performance for complex location-based data retrieval.",
+      "Reduced search latency by indexing spatial data and streamlining query execution paths.",
+    ],
   },
 ];
 
 export const CONTACT = {
-  address: "Hyderabad, Telangana, India-500055",
-  phoneNo: "+91 9063531983 ",
-  email: "vardhans@gmail.com",
+  address: "Hyderabad, India",
+  phoneNo: "+91 9063531983",
+  email: "vardhans367@gmail.com",
 };
+
+export const SKILL_CATEGORIES = [
+  {
+    title: "Programming Languages",
+    skills: ["Java", "Python"],
+  },
+  {
+    title: "Frontend",
+    skills: ["React.js", "HTML5", "CSS3", "JavaScript (ES6+)"],
+  },
+  {
+    title: "Backend",
+    skills: ["Node.js", "Spring Boot", "Flask", "REST APIs", "Express.js"],
+  },
+  {
+    title: "Databases",
+    skills: ["MySQL", "MongoDB", "Supabase", "SQL"],
+  },
+  {
+    title: "AI / ML",
+    skills: ["NLP", "Machine Learning", "Chatbot Development"],
+  },
+  {
+    title: "Tools & Platforms",
+    skills: ["Git", "GitHub", "Vite", "Power BI", "Tableau", "Flutter", "AWS"],
+  },
+];
+
+export const TECH_SKILLS = [
+  { name: "React.js", color: "#61DAFB" },
+  { name: "Node.js", color: "#339933" },
+  { name: "MongoDB", color: "#47A248" },
+  { name: "Java", color: "#ED8B00" },
+  { name: "Python", color: "#3776AB" },
+  { name: "Spring Boot", color: "#6DB33F" },
+  { name: "Flask", color: "#ffffff" },
+  { name: "MySQL", color: "#4479A1" },
+  { name: "JavaScript", color: "#F7DF1E" },
+  { name: "Express.js", color: "#ffffff" },
+  { name: "Flutter", color: "#02569B" },
+  { name: "AWS", color: "#FF9900" },
+  { name: "Supabase", color: "#3ECF8E" },
+  { name: "Git", color: "#F05032" },
+  { name: "GitHub", color: "#ffffff" },
+  { name: "Vite", color: "#646CFF" },
+  { name: "HTML5", color: "#E34F26" },
+  { name: "CSS3", color: "#1572B6" },
+  { name: "NLP", color: "#A78BFA" },
+  { name: "Power BI", color: "#F2C811" },
+  { name: "Tableau", color: "#E97627" },
+];
+
+/** Labels shown when hovering background starfield particles */
+export const STARFIELD_SKILLS = TECH_SKILLS.map((s) => s.name);
+
+export const SERVICES = [
+  {
+    title: "Full Stack Web Development",
+    description:
+      "Building scalable, user-centric web applications with React.js, Node.js, Spring Boot, and Python — from UI components to production-ready deployments.",
+  },
+  {
+    title: "RESTful API Engineering",
+    description:
+      "Designing and implementing secure REST APIs for CRM ecosystems, customer workflows, and high-traffic platforms with optimized database integration.",
+  },
+  {
+    title: "AIML Integration & Chatbots",
+    description:
+      "Integrating NLP-powered chatbots and machine learning features into full-stack platforms for intelligent, context-aware user experiences.",
+  },
+  {
+    title: "Backend & Database Architecture",
+    description:
+      "Engineering secure backends with JWT authentication, role-based access control, normalized schemas, and high-concurrency MySQL optimization.",
+  },
+  {
+    title: "Mobile App Development",
+    description:
+      "Cross-platform mobile solutions with Flutter, real-time data sync via Supabase, and Node.js backends for live performance tracking.",
+  },
+  {
+    title: "Cloud & DevOps Practices",
+    description:
+      "Deploying scalable hosting infrastructure, ensuring high availability, API integration, and agile delivery across concurrent projects.",
+  },
+];
 
 export const CERTIFICATIONS = [
   {
-    title: "Java Programming",
+    title: "Certified Artificial Intelligence Primer",
+    provider: "Infosys",
+    year: "2025",
+  },
+  {
+    title: "Certified in Software Project Management",
+    provider: "NPTEL",
+    year: "2025",
+  },
+  {
+    title: "Completed Java and Python programming courses",
     provider: "Codetantra",
-    year: 2023,
+    year: "2025",
   },
   {
-    title: "Data Structures and Algorithms Through Java",
-    provider: "Codetantra",
-    year: 2024,
+    title: "Led a backend development team",
+    provider: "Smart India Hackathon",
+    year: "2025",
   },
   {
-    title: "Introduction Database Management System",
-    provider: "Codetantra",
-    year: 2024,
+    title: "Pearson English International Certificate — Level 10 (C1 Advanced Proficiency)",
+    provider: "Pearson",
+    year: "2025",
   },
   {
-    title: "Build a computer vision app with Azure Cognitive Services",
-    provider: "Coursera",
-    year: 2024,
+    title: "AWS Academy Graduate — Data Engineering",
+    provider: "AWS Academy",
+    year: "2025",
   },
   {
-    title: "Python Programming Essentials",
-    provider: "Coursera",
-    year: 2025,
-  }
+    title: "AWS Academy Graduate — Cloud Foundations",
+    provider: "AWS Academy",
+    year: "2025",
+  },
 ];
