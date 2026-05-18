@@ -1,57 +1,21 @@
 import { useEffect, useRef } from "react";
 import { STARFIELD_SKILLS } from "../constants";
 
-const THREE_CDN =
-  "https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js";
-const VANTA_CDN =
-  "https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.galaxy.min.js";
+/** Solid dark base — matches hero reference (no purple galaxy gradient) */
+export const COSMIC_BG = "#0b0e14";
 
 const STARFIELD_CONFIG = {
-  starCount: 180,
-  maxStarSize: 6,
+  starCount: 220,
+  maxStarSize: 7,
   minStarSize: 1,
   hoverRadius: 110,
   connectionRadius: 140,
   linkDistance: 130,
   colors: {
-    star: ["#f9fbfc", "#f2f2ee", "#dbdbd8"],
-    connection: "rgba(255, 255, 255, 0.55)",
+    star: ["#ffffff", "#f5f5f4", "#e7e5e4", "#d6d3d1"],
+    connection: "rgba(255, 255, 255, 0.45)",
   },
 };
-
-const VANTA_GALAXY_OPTIONS = {
-  mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200,
-  minWidth: 200,
-  scale: 1,
-  scaleMobile: 1,
-  color: 0x1e3a8a,
-  backgroundColor: 0x0a0f1a,
-  size: 1.2,
-  spacing: 15,
-};
-
-const FALLBACK_BG =
-  "radial-gradient(circle at 25% 25%, #1e3a8a 0%, transparent 50%), " +
-  "radial-gradient(circle at 75% 75%, #7c3aed 0%, transparent 50%), " +
-  "linear-gradient(135deg, #0a0f1a 0%, #111827 100%)";
-
-function loadScript(src) {
-  return new Promise((resolve, reject) => {
-    if (document.querySelector(`script[src="${src}"]`)) {
-      resolve();
-      return;
-    }
-    const script = document.createElement("script");
-    script.src = src;
-    script.async = true;
-    script.onload = () => resolve();
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
-}
 
 function initStarfield(canvas) {
   const ctx = canvas.getContext("2d");
@@ -86,8 +50,8 @@ function initStarfield(canvas) {
         brightness: Math.random() * 0.5 + 0.5,
         twinkleSpeed: Math.random() * 0.02 + 0.01,
         twinkleOffset: Math.random() * Math.PI * 2,
-        vx: (Math.random() - 0.5) * 0.1,
-        vy: (Math.random() - 0.5) * 0.1,
+        vx: (Math.random() - 0.5) * 0.08,
+        vy: (Math.random() - 0.5) * 0.08,
         skillLabel: STARFIELD_SKILLS[i % STARFIELD_SKILLS.length],
       });
     }
@@ -128,8 +92,8 @@ function initStarfield(canvas) {
       } else {
         star.size = star.originalSize;
         star.brightness =
-          0.45 +
-          Math.sin(frameCount * star.twinkleSpeed + star.twinkleOffset) * 0.25;
+          0.4 +
+          Math.sin(frameCount * star.twinkleSpeed + star.twinkleOffset) * 0.3;
       }
     });
   };
@@ -145,7 +109,6 @@ function initStarfield(canvas) {
     ctx.strokeStyle = STARFIELD_CONFIG.colors.connection;
     ctx.lineWidth = 1;
 
-    // Constellation mesh — link stars near the cursor
     for (let i = 0; i < nearMouse.length; i++) {
       for (let j = i + 1; j < nearMouse.length; j++) {
         const a = nearMouse[i];
@@ -160,7 +123,7 @@ function initStarfield(canvas) {
           );
           const mouseFade = 1 - mouseNear / connectionRadius;
 
-          ctx.globalAlpha = lineFade * mouseFade * 0.65;
+          ctx.globalAlpha = lineFade * mouseFade * 0.55;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
@@ -169,14 +132,13 @@ function initStarfield(canvas) {
       }
     }
 
-    // Spokes from the hovered star
     if (activeStar) {
       stars.forEach((star) => {
         if (star === activeStar) return;
         const dist = Math.hypot(activeStar.x - star.x, activeStar.y - star.y);
 
         if (dist < linkDistance) {
-          ctx.globalAlpha = (1 - dist / linkDistance) * 0.75;
+          ctx.globalAlpha = (1 - dist / linkDistance) * 0.65;
           ctx.beginPath();
           ctx.moveTo(activeStar.x, activeStar.y);
           ctx.lineTo(star.x, star.y);
@@ -201,8 +163,8 @@ function initStarfield(canvas) {
     const y = star.y - star.size - boxH - 6;
 
     ctx.globalAlpha = 0.92;
-    ctx.fillStyle = "rgba(10, 15, 26, 0.88)";
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
+    ctx.fillStyle = "rgba(11, 14, 20, 0.9)";
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.22)";
     ctx.lineWidth = 1;
     ctx.beginPath();
     if (typeof ctx.roundRect === "function") {
@@ -228,6 +190,13 @@ function initStarfield(canvas) {
       ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
       ctx.fill();
 
+      if (star.size > 2.5) {
+        ctx.globalAlpha = star.brightness * 0.2;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size * 1.8, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       if (star === activeStar) {
         ctx.globalAlpha = star.brightness * 0.35;
         ctx.beginPath();
@@ -241,7 +210,8 @@ function initStarfield(canvas) {
   };
 
   const animate = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = COSMIC_BG;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     updateStars();
     drawConnections();
     drawStars();
@@ -296,45 +266,7 @@ function initStarfield(canvas) {
 }
 
 const CosmicBackground = () => {
-  const vantaRef = useRef(null);
-  const vantaEffect = useRef(null);
   const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const el = vantaRef.current;
-    if (!el) return;
-
-    let cancelled = false;
-
-    const initVanta = async () => {
-      try {
-        if (!window.THREE) {
-          await loadScript(THREE_CDN);
-        }
-        await loadScript(VANTA_CDN);
-        if (cancelled || !vantaRef.current || !window.VANTA?.GALAXY) return;
-
-        vantaEffect.current = window.VANTA.GALAXY({
-          el: vantaRef.current,
-          ...VANTA_GALAXY_OPTIONS,
-        });
-      } catch {
-        if (!cancelled && vantaRef.current) {
-          vantaRef.current.style.background = FALLBACK_BG;
-        }
-      }
-    };
-
-    initVanta();
-
-    return () => {
-      cancelled = true;
-      if (vantaEffect.current) {
-        vantaEffect.current.destroy();
-        vantaEffect.current = null;
-      }
-    };
-  }, []);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -344,9 +276,9 @@ const CosmicBackground = () => {
   return (
     <div
       className="cosmic-background pointer-events-none fixed inset-0 -z-10"
+      style={{ backgroundColor: COSMIC_BG }}
       aria-hidden="true"
     >
-      <div ref={vantaRef} className="absolute inset-0" />
       <canvas
         ref={canvasRef}
         className="starfield-canvas absolute inset-0 block h-full w-full"
