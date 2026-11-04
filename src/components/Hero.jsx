@@ -1,4 +1,4 @@
-import profilePic from "../assets/1.webp";
+import profilePic from "../assets/1.png";
 import { HERO_CONTENT, CERTIFICATIONS } from "../constants";
 import { motion } from "framer-motion";
 
