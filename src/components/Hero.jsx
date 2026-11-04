@@ -21,7 +21,7 @@ const Hero = () => {
             <img
               src={profilePic}
               alt="Shashi Vardhan"
-              className="h-full w-full object-cover object-center scale-[1.35] translate-y-4"
+              className="h-full w-full object-cover object-center scale-[1.35] translate-y-10"
             />
           </div>
         </motion.div>
