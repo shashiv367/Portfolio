@@ -9,13 +9,23 @@ const projectRoot = path.resolve(
 );
 
 const envKeys = [
+  // SMTP / Nodemailer
+  "EMAIL_USER",
+  "EMAIL_PASS",
+  "EMAIL_FROM",
+  "SMTP_HOST",
+  "SMTP_PORT",
+  "SMTP_SECURE",
+  "SMTP_USER",
+  "SMTP_PASS",
+  // EmailJS fallback
   "EMAILJS_SERVICE_ID",
   "EMAILJS_PUBLIC_KEY",
   "EMAILJS_PRIVATE_KEY",
   "EMAILJS_TEMPLATE_OWNER",
   "EMAILJS_TEMPLATE_USER",
+  // App
   "OWNER_EMAIL",
-  "FIREBASE_SERVICE_ACCOUNT_PATH",
   "PORT",
   "CLIENT_URL",
 ];
